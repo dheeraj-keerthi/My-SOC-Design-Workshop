@@ -48,5 +48,8 @@ Synthesis Output:
 Below are screenshots showcasing the execution of synthesis:
 * Preparation Completion:
   ![VirtualBox_vsdworkshop_07_10_2024_15_13_48](https://github.com/user-attachments/assets/231d4885-710e-437b-9dfa-336dbdeadb8c)
+* Synthesis Running:
+ ![VirtualBox_vsdworkshop_07_10_2024_15_13_48](https://github.com/user-attachments/assets/44a201c9-c66c-4035-afb4-fbd0212672d9)
+  
 
 
