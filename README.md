@@ -10,6 +10,7 @@ Objectives:
 ### Task 1: Running 'picorv32a' using OpenLANE
 Here is step by step procedure to obtain synthesis results using OpenLANE.
 1. Change to the OpenLANE flow directory:
+   use the command cd to enter into Desktop-->work-->tools-->openlane_working_dir-->openlane
 
 ```bash
 cd Desktop/work/tools/openlane_working_dir/openlane
@@ -23,6 +24,7 @@ alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e 
 docker
 ```
 4.Enter OpenLANE interactive mode:
+using which the flow has to go
 ```tcl
 ./flow.tcl -interactive
 ```
