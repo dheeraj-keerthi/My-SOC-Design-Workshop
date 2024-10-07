@@ -81,4 +81,7 @@ Flop\ Ratio = \frac{1613}{14876} = 0.108429685
 Percentage\ of\ DFF's = 0.108429685 * 100 = 10.84296854\ \%
 ```
 
+## Section 2 - Good Floorplan vs Bad Floorplan and Introduction to Library Cell 
+
+### Implementation
 
