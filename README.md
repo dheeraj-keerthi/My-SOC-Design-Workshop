@@ -10,7 +10,7 @@ Objectives:
 ### Task 1: Running 'picorv32a' using OpenLANE
 Here is step by step procedure to obtain synthesis results using OpenLANE.
 1. Change to the OpenLANE flow directory:
-   use the command cd to enter into Desktop-->work-->tools-->openlane_working_dir-->openlane
+ use the command cd to enter into Desktop-->work-->tools-->openlane_working_dir-->openlane
 
 ```bash
 cd Desktop/work/tools/openlane_working_dir/openlane
