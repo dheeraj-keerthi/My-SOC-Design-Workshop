@@ -7,3 +7,4 @@ Objectives:
 1. Running 'picorv32a' using OpenLANE and generating necessary outputs.
 2. Calculating the flop ratio based on synthesis results.
 
+### Task 1: Running 'picorv32a' Design Synthesis using OpenLANE
