@@ -29,7 +29,7 @@ using which the flow has to go
 ./flow.tcl -interactive
 ```
 5.Load the OpenLANE package:
-tcl
+```tcl
 package require openlane 0.9
 ```
 6.Prepare the design 'picorv32a':
