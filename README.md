@@ -44,4 +44,9 @@ run_synthesis
 ```tcl
 exit
 ```
+Synthesis Output:
+Below are screenshots showcasing the execution of synthesis:
+* Preparation Completion:
+  ![VirtualBox_vsdworkshop_07_10_2024_15_13_48](https://github.com/user-attachments/assets/231d4885-710e-437b-9dfa-336dbdeadb8c)
+
 
