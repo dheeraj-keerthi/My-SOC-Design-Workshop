@@ -15,7 +15,7 @@ Here is step by step procedure to obtain synthesis results using OpenLANE.
 ```bash
 cd Desktop/work/tools/openlane_working_dir/openlane
 ```
-  2.(Optional) Set up Docker alias if needed:
+2.(Optional) Set up Docker alias if needed:
   ```bash
 alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
 ```
@@ -29,7 +29,7 @@ using which the flow has to go
 ./flow.tcl -interactive
 ```
 5.Load the OpenLANE package:
-```tcl
+tcl
 package require openlane 0.9
 ```
 6.Prepare the design 'picorv32a':
