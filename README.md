@@ -198,6 +198,14 @@ Ports are placed on the layer as defined by  the config.tcl file.
 
 * Decap Cells and Tap Cells & Diagonally Equidistant Tap Cells:
   ![VirtualBox_vsdworkshop_08_10_2024_23_55_43](https://github.com/user-attachments/assets/1bb0373d-dfb0-4e48-9576-5aa29e373c1a)
+
+* Unplaced Standard Cells at Origin:
+
+This image shows the standard cells that are currently unplaced, located at the origin, which is typical prior to placement optimization.
+![VirtualBox_vsdworkshop_09_10_2024_00_06_40](https://github.com/user-attachments/assets/f7a39731-e157-48bf-a726-5934cd2f2a5c)
+
+### Task 4:Run Congestion-Aware Placement.
+
   
 
 
