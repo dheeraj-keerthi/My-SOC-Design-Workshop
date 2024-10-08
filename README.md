@@ -187,6 +187,16 @@ The floorplan DEF file has been successfully loaded into Magic for visualization
 
 * Equidistant Placement of Ports:
 This image showcases the equidistant placement of ports, which was configured in the config.tcl file to ensure optimal distribution.
+![VirtualBox_vsdworkshop_08_10_2024_23_47_21](https://github.com/user-attachments/assets/40741442-99d3-46f6-9cca-1e0314d5f971)
+
+* Port Layer Configuration:
+
+Ports are placed on the layer as defined by the config.tcl file.
+![VirtualBox_vsdworkshop_08_10_2024_23_45_36](https://github.com/user-attachments/assets/c4aa3e4d-0405-4ba9-b446-97e778de3225)
+
+![VirtualBox_vsdworkshop_08_10_2024_23_51_49](https://github.com/user-attachments/assets/675ac609-07ce-41f2-8162-12f30863436a)
+
+
 
 
 
