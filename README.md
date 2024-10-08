@@ -168,6 +168,26 @@ Die\ height\ in\ microns = \frac{671405}{1000} = 671.405\ Microns
 Area\ of\ die\ in\ microns = 660.685 * 671.405 = 443587.212425\ Square\ Microns
 ```
 
+### Task 3: Load Floorplan DEF in Magic Tool.
+
+Commands to Load Floorplan DEF in Magic:
+1.Change directory to path containing generated floorplan def
+```bash
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/07-09_20-37/results/floorplan/
+```
+2.Command to load the floorplan def in magic tool
+```bash
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+```
+* Floorplan Loaded in Magic:
+
+The floorplan DEF file has been successfully loaded into Magic for visualization.
+![VirtualBox_vsdworkshop_08_10_2024_23_27_24](https://github.com/user-attachments/assets/a25a2be4-a4fd-4375-ab3a-efb00fa5eed3)
+
+* Equidistant Placement of Ports:
+This image showcases the equidistant placement of ports, which was configured in the config.tcl file to ensure optimal distribution.
+
+
 
 
 
