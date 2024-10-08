@@ -182,7 +182,8 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 * Floorplan Loaded in Magic:
 
 The floorplan DEF file has been successfully loaded into Magic for visualization.
-![VirtualBox_vsdworkshop_08_10_2024_23_27_24](https://github.com/user-attachments/assets/a25a2be4-a4fd-4375-ab3a-efb00fa5eed3)
+![magicT](https://github.com/user-attachments/assets/72d350c0-1aba-4a77-93e4-9efeece8050a)
+
 
 * Equidistant Placement of Ports:
 This image showcases the equidistant placement of ports, which was configured in the config.tcl file to ensure optimal distribution.
