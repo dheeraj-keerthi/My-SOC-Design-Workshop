@@ -84,4 +84,90 @@ Percentage\ of\ DFF's = 0.108429685 * 100 = 10.84296854\ \%
 ## Section 2 - Good Floorplan vs Bad Floorplan and Introduction to Library Cell 
 
 ### Implementation
+Objectives: 
+1.Run 'picorv32a' Design Floorplan Using OpenLANE.
+
+2.Calculate Die Area in Microns.
+
+3.Load Floorplan DEF in Magic Tool.
+
+4.Run Congestion-Aware Placement.
+
+5.Load Placement DEF in Magic Tool.
+### Task 1: Run 'picorv32a' Design Floorplan Using OpenLANE.
+
+Steps to perform Floorplan:
+  1.Change to the OpenLANE flow directory:
+
+```bash
+cd Desktop/work/tools/openlane_working_dir/openlane
+```
+  2.(Optional) Set up Docker alias if needed:
+  ```bash
+alias docker='docker run -it -v $(pwd):/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) efabless/openlane:v0.21'
+```
+3.Start the Docker container:
+```bash
+docker
+```
+4.Enter OpenLANE interactive mode:
+```tcl
+./flow.tcl -interactive
+```
+5.Load the OpenLANE package:
+```tcl
+package require openlane 0.9
+```
+6.Prepare the design 'picorv32a':
+```tcl
+prep -design picorv32a
+```
+7.Perform the synthesis:
+```tcl
+run_synthesis
+```
+8.Run the floorplan step:
+```tcl
+run_floorplan
+```
+9.Exit the OpenLANE flow:
+```tcl
+exit
+```
+
+Floorplan Output:
+
+![floorplanning](https://github.com/user-attachments/assets/b60781cf-1c13-4d3c-86ca-99c5f5980d3b)
+![floorplanning](https://github.com/user-attachments/assets/acc690f3-e4f6-4059-9ebf-051d048fe5db)
+
+#### Task 2: Calculate Die Area in Microns.
+
+ Screenshots showcasing the floorplan DEF file:
+ ![die area](https://github.com/user-attachments/assets/a2617c7b-4213-48a5-b961-31aaa20e9cc4)
+ According to floorplan def
+
+```math
+1000\ Unit\ Distance = 1\ Micron
+```
+```math
+Die\ width\ in\ unit\ distance = 660685 - 0 = 660685
+```
+```math
+Die\ height\ in\ unit\ distance = 671405 - 0 = 671405
+```
+```math
+Distance\ in\ microns = \frac{Value\ in\ Unit\ Distance}{1000}
+```
+```math
+Die\ width\ in\ microns = \frac{660685}{1000} = 660.685\ Microns
+```
+```math
+Die\ height\ in\ microns = \frac{671405}{1000} = 671.405\ Microns
+```
+```math
+Area\ of\ die\ in\ microns = 660.685 * 671.405 = 443587.212425\ Square\ Microns
+```
+
+
+
 
