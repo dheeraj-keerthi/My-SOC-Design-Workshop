@@ -191,10 +191,14 @@ This image showcases the equidistant placement of ports, which was configured in
 
 * Port Layer Configuration:
 
-Ports are placed on the layer as defined by the config.tcl file.
+Ports are placed on the layer as defined by  the config.tcl file.
 ![VirtualBox_vsdworkshop_08_10_2024_23_45_36](https://github.com/user-attachments/assets/c4aa3e4d-0405-4ba9-b446-97e778de3225)
 
 ![VirtualBox_vsdworkshop_08_10_2024_23_51_49](https://github.com/user-attachments/assets/675ac609-07ce-41f2-8162-12f30863436a)
+
+* Decap Cells and Tap Cells & Diagonally Equidistant Tap Cells:
+  ![VirtualBox_vsdworkshop_08_10_2024_23_55_43](https://github.com/user-attachments/assets/1bb0373d-dfb0-4e48-9576-5aa29e373c1a)
+  
 
 
 
