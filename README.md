@@ -206,6 +206,42 @@ This image shows the standard cells that are currently unplaced, located at the 
 
 ### Task 4:Run Congestion-Aware Placement.
 
+Command to run placement
+```bash
+run_placement
+```
+* Placement Completion:
+
+
+  The placement run has successfully completed, with the design placed according to congestion and timing constraints.
+
+  ![run_placement](https://github.com/user-attachments/assets/5ef8d1cf-6504-4d4a-b245-824682e8c15f)
+
+### Task 5: Load Placement DEF in Magic Tool.
+To load the generated placement DEF file in the Magic tool, use the following commands in a separate terminal:
+Commands to Load Placement DEF in Magic
+1.Navigate to the directory containing the placement DEF file:
+```bash
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/07-09_20-37/results/placement/
+```
+2.Load the placement DEF in Magic:
+```bash
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech \
+lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+```
+* Placement DEF Loaded in Magic
+  
+  The placement DEF file has been successfully loaded into Magic, showing the placement of standard cells and other components.
+  ![VirtualBox_vsdworkshop_10_10_2024_01_29_39](https://github.com/user-attachments/assets/aa5366a1-ebce-41ae-8086-e974083bda88)
+
+ * Legally Placed Standard Cells
+  
+  This screenshot shows the standard cells placed legally according to the design rules, ensuring a functional and optimized layout.
+  ![VirtualBox_vsdworkshop_10_10_2024_01_32_14](https://github.com/user-attachments/assets/14a959a5-23d7-42c8-a473-78033854137f)
+
+
+
+
   
 
 
