@@ -271,6 +271,38 @@ Objectives:
 
 8.Correcting DRC Errors in SkyWater SKY130 Process Using Magic VLSI Layout Tool.
 
+### Task 1: Cloning Custom Inverter Standard Cell Design from GitHub Repository
+1.Navigate to the OpenLANE working directory:
+
+```bash
+cd Desktop/work/tools/openlane_working_dir/openlane
+```
+  2.Clone the custom inverter design repository
+  ```bash
+git clone https://github.com/nickson-jose/vsdstdcelldesign
+```
+3.Move into the repository's directory
+```bash
+cd vsdstdcelldesign
+```
+4.Copy the Magic tech file for easier access
+```bash
+cp ~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech .
+```
+5.Verify the contents of the directory
+```bash
+ls
+```
+6.Open the custom inverter layout in Magic
+```bash
+magic -T sky130A.tech sky130_inv.mag &
+```
+
+Ensure that you have successfully cloned the repository and opened the custom inverter layout using Magic for further exploration. The screenshot of the commands run is also shown below.
+
+* Screenshot:
+
+
 
 
 
