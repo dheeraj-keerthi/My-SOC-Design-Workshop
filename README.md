@@ -239,6 +239,40 @@ lef read ../../tmp/merged.lef def read picorv32a.placement.def &
   This screenshot shows the standard cells placed legally according to the design rules, ensuring a functional and optimized layout.
   ![VirtualBox_vsdworkshop_10_10_2024_01_32_14](https://github.com/user-attachments/assets/14a959a5-23d7-42c8-a473-78033854137f)
 
+  Commands to exit from current run
+
+```tcl
+# Exit from OpenLANE flow
+exit
+
+# Exit from OpenLANE flow docker sub-system
+exit
+```
+
+## Section 3 - Design library cell using Magic Layout and ngspice characterization 
+
+### Implementation
+
+Objectives: 
+
+1.Clone the GitHub repository for the Standard Cell Design and Characterization using the OpenLANE flow: [Standard cell design](https://github.com/nickson-jose/vsdstdcelldesign).
+
+2.Open the custom inverter layout in Magic for inspection and exploration.
+
+3.Perform SPICE extraction of the inverter design using Magic.
+
+4.Modify the SPICE model file for further analysis and simulation.
+
+5.Conduct post-layout simulations using ngspice.
+
+6.Rise and Fall Transition Time Calculations.
+
+7.Cell Delay Calculations.
+
+8.Correcting DRC Errors in SkyWater SKY130 Process Using Magic VLSI Layout Tool.
+
+
+
 
 
 
