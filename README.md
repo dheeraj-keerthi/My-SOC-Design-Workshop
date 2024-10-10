@@ -298,9 +298,6 @@ ls
 magic -T sky130A.tech sky130_inv.mag &
 ```
 
-Ensure that you have successfully cloned the repository and opened the custom inverter layout using Magic for further exploration. The screenshot of the commands run is also shown below.
-
-* Screenshot:
 
 
 
