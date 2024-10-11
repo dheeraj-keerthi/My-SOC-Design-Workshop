@@ -595,6 +595,7 @@ drc why
 ```
 
 Post-fix Screenshot:
+![corrected nwell](https://github.com/user-attachments/assets/40f87039-fefe-46ed-8cbe-113875dc8314)
 
   
 
