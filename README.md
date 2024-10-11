@@ -297,6 +297,86 @@ ls
 ```bash
 magic -T sky130A.tech sky130_inv.mag &
 ```
+Ensure that you have successfully cloned the repository and opened the custom inverter layout using Magic for further exploration. The screenshot of the commands run is also shown below.
+
+![clone](https://github.com/user-attachments/assets/cd3496ac-4450-4525-931f-ebe1432a3504)
+
+### Task 2: Open the custom inverter layout in Magic for inspection and exploration.
+
+After opening the custom inverter layout into Magic, the design exploration can be conducted by identifying critical components and connections, including NMOS, PMOS, and various signal paths.
+* Steps:
+  1.Load the layout in Magic:
+  ```bash
+  magic -T sky130A.tech sky130_inv.mag &
+  ```
+  2.NMOS and PMOS Identified:
+  * Both NMOS and PMOS transistors were identified within the layout. Screenshots of these are provided below.
+  ![nmospmos](https://github.com/user-attachments/assets/e4feffe1-147c-4dc6-99c2-32a551b98fc7)
+ 3.Verification of Output (Y) Connectivity to PMOS and NMOS Drain:
+  * The connectivity from the output Y to the PMOS and NMOS drains was checked and verified.
+  ![VirtualBox_vsdworkshop_11_10_2024_15_53_30](https://github.com/user-attachments/assets/77c2bed6-e9b9-46ec-94ca-90b2d47edf19)
+ * A portion of the layout was deliberately deleted to trigger a DRC (Design Rule Check) error, and the tool successfully flagged the error.
+![error](https://github.com/user-attachments/assets/86a20df5-75b8-430a-9e1e-3e26f3bd15fa)
+### Task 3: Perform SPICE extraction of the inverter design using Magic.
+
+To extract the SPICE netlist from the custom inverter layout in Magic, follow these steps in the tkcon window:
+
+Commands for SPICE Extraction:
+1.Check the current directory
+```bash
+pwd
+```
+2.Extract the layout into .ext format
+```bash
+extract all
+```
+3.Enable parasitic extraction (capacitance and resistance thresholds set to 0 for full extraction)
+```bash
+ext2spice cthresh 0 rthresh 0
+```
+4.Convert .ext file to SPICE format
+```bash
+ext2spice
+```
+Screenshots:
+
+1.TKcon window after running extraction commands:
+
+![spice](https://github.com/user-attachments/assets/436b2320-e622-478d-8f9a-95fcbbcfa4fd)
+
+2.Generated SPICE file:
+![spicefiles](https://github.com/user-attachments/assets/4f9f9a38-dee0-412a-9f91-321f2f9cdaad)
+
+### Task 4: Modify the SPICE model file for further analysis and simulation.
+* Measuring Unit Distance in Layout Grid
+
+  Before editing the SPICE model file, ensure the grid spacing and unit distance in the layout are accurate. This will help in verifying and adjusting the extracted device dimensions.
+
+  * Final Edited SPICE File for ngspice Simulation
+
+  After extracting the SPICE file, review and edit it as needed for ngspice simulation. Ensure that the netlist includes accurate connections and the appropriate device models for the Skywater 130nm process.
+
+* Screenshot: Edited SPICE file
+  ![editedspice](https://github.com/user-attachments/assets/1b138196-5d4d-422e-9f34-5c0e5c423b55)
+### Task 5: Conduct post-layout simulations using ngspice.
+
+* Running the SPICE Simulation
+
+  To run a post-layout simulation in ngspice, use the following commands to load the SPICE file and plot the output.
+
+  1.Load the SPICE file into ngspice
+  ```bash
+  ngspice sky130_inv.spice
+  ```
+  2.Plot output y vs time a (input)
+  ```bash
+  plot y vs time a
+  ```
+
+
+* Screenshot: Running the ngspice simulation
+
+
 
 
 
