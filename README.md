@@ -375,6 +375,229 @@ Screenshots:
 
 
 * Screenshot: Running the ngspice simulation
+  ![VirtualBox_vsdworkshop_11_10_2024_22_06_31](https://github.com/user-attachments/assets/8226d12a-b700-463c-916a-3965c09034c9)
+   * Screenshot: Generated plot
+![VirtualBox_vsdworkshop_11_10_2024_22_09_05](https://github.com/user-attachments/assets/94c28b1a-34f6-46b4-9a7d-19c56b394009)
+### Task 6:  Rise and Fall Transition Time Calculations:
+
+1. Rise Transition Time Calculation:
+
+```math
+Rise\ transition\ time = Time\ taken\ for\ output\ to\ rise\ to\ 80\% - Time\ taken\ for\ output\ to\ rise\ to\ 20\%
+```
+```math
+20\%\ of\ output = 660\ mV
+```
+```math
+80\%\ of\ output = 2.64\ V
+```
+```math
+Rise\ transition\ time = 2.24592 - 2.18213 = 0.06376\ ns = 63.76\ ps
+```
+![VirtualBox_vsdworkshop_11_10_2024_22_25_00](https://github.com/user-attachments/assets/9300eab2-02d8-407a-8e52-98bd1a5597c4)
+2. Fall Cell Delay Calculation:
+![VirtualBox_vsdworkshop_11_10_2024_22_30_11](https://github.com/user-attachments/assets/7405ab9f-a576-4662-857c-e76587a98a8c)
+### Task 8: Correcting DRC Errors in SkyWater SKY130 Process Using Magic VLSI Layout Tool
+
+1.Download and Extract the DRC Test Files
+
+Start by downloading the required test files and extracting them in your home directory.
+
+  1. Change to the Home Directory:
+
+     ```bash
+     cd
+     ```
+  2. Download the Lab Files:
+
+     ```bash
+     wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz\
+     ```
+  3. Extract the Compressed Files:
+
+     ```bash
+     tar xfz drc_tests.tgz
+     ```
+  4. Navigate to the Lab Directory:
+
+     ```bash
+     cd drc_tests
+     ```
+  5. List the Contents of the Directory:
+     ```bash
+     ls -al
+     ```
+  ![VirtualBox_vsdworkshop_11_10_2024_22_46_29](https://github.com/user-attachments/assets/e63862dc-9495-4f89-b162-558e7a0748c1)
+  2.View the .magicrc Configuration File
+
+Before proceeding, it’s a good idea to inspect the .magicrc file to ensure that Magic is configured properly.
+
+  * Viewing the .magicrc File:
+
+    
+     ```bash
+     # Open the .magicrc file in a text editor
+     gvim .magicrc
+     ```
+![VirtualBox_vsdworkshop_11_10_2024_22_47_49](https://github.com/user-attachments/assets/c1bef0de-6ffd-407d-9dbd-e02d8fb1e702)
+3.Open the Magic Tool with the Updated Tech File
+
+Start Magic in a better graphics mode to view the design and identify DRC violations.
+
+```bash
+# Open Magic in XR mode
+magic -d XR &
+```
+
+4.Fixing Incorrectly Implemented poly.9 Rule
+
+The poly.9 rule defines a minimum spacing rule that was not properly enforced. We will update the DRC rule and verify the correction.
+
+Screenshot of poly rules:
+
+
+![poly 9 rule](https://github.com/user-attachments/assets/a692e665-8d3d-4d9f-8c06-030f2a905698)
+
+![VirtualBox_vsdworkshop_11_10_2024_22_59_01](https://github.com/user-attachments/assets/3173e956-baf4-4890-9771-e672abf70cdb)
+
+![VirtualBox_vsdworkshop_11_10_2024_23_01_18](https://github.com/user-attachments/assets/87e1a618-6985-4f32-8c23-8efee9682f24)
+
+![VirtualBox_vsdworkshop_11_10_2024_23_04_35](https://github.com/user-attachments/assets/ad2b19c9-ea57-4186-8928-8d73d9826c7c)
+
+Solution: Update the Sky130 DRC tech file.
+
+Inserting New Commands into sky130A.tech File:
+
+open sky130A.tech file
+
+```bash
+gvim sky130A.tech
+```
+
+Screenshot after Inserting new commands into sky130A.tech file
+
+
+![edited poly 9 1](https://github.com/user-attachments/assets/0b9d6289-2db0-49aa-a08e-54903e47e76d)
+
+
+![edited poly 9 2](https://github.com/user-attachments/assets/97dc33f5-92e3-4d2c-b8e9-23e163678f42)
+
+Commands to Run:
+
+```tcl
+# Load the updated tech file
+tech load sky130A.tech
+```
+```tcl
+# Run DRC check
+drc check
+
+```
+```tcl
+# Select region with errors and view messages
+drc why
+```
+
+Post-fix Screenshot:
+
+![poly 9 corrected](https://github.com/user-attachments/assets/df147bb8-70c9-47bd-945f-cf37685c2ea9)
+
+5.Fixing Incorrectly Implemented difftap.2 Rule
+
+The difftap.2 rule was improperly implemented, with no DRC violation for spacing < 0.42u.
+
+Screenshot of difftap rules:
+
+![difftap 2](https://github.com/user-attachments/assets/d9bde2af-03a0-46d6-9d4f-5f6669ecc7a8)
+
+Problem: No violation occurred for difftap spacing < 0.42u.
+
+![difftap error](https://github.com/user-attachments/assets/82625354-1267-45f5-bb10-6320d79d90ee)
+
+Solution: Update the Sky130 DRC tech file.
+
+Inserting New Commands into sky130A.tech File:
+
+![edited difftap 2](https://github.com/user-attachments/assets/04840728-0ba4-4b31-9dc6-94145be686e8)
+
+Commands to Run:
+
+```tcl
+# Load the updated tech file
+tech load sky130A.tech
+```
+```tcl
+# Run DRC check
+drc check
+
+```
+```tcl
+# Select region with errors and view messages
+drc why
+```
+
+Post-fix Screenshot:
+
+![difftap corrected](https://github.com/user-attachments/assets/ede865a5-c634-4b5f-8108-8af527ffc36b)
+
+6.Fixing Incorrectly Implemented nwell.4 Rule
+
+The nwell.4 rule, which enforces the presence of a tap within the nwell, was also improperly implemented.
+
+Screenshot of nwell rules:
+
+![nwell 4 rule](https://github.com/user-attachments/assets/55d3fec3-0227-44c0-a70b-73ca6ecf8131)
+
+Problem: No DRC violation occurred even though a tap was missing from the nwell.
+
+
+![nwell error](https://github.com/user-attachments/assets/ce14dc30-1fe4-4633-afa1-b433bdcd8efd)
+
+
+
+Solution: Update the Sky130 DRC tech file.
+
+Inserting New Commands into sky130A.tech File:
+
+![edited nwel 1](https://github.com/user-attachments/assets/65398b05-5cf4-4e76-9a49-200181c51eab)
+
+![edited nwel 2](https://github.com/user-attachments/assets/79c55f1a-65cd-4713-92df-df7be286a766)
+
+
+Commands to Run:
+
+```tcl
+# Load the updated tech file
+tech load sky130A.tech
+```
+
+```tcl
+# Change drc style to drc full
+drc style drc(full)
+```
+
+```tcl
+# Run DRC check
+drc check
+
+```
+```tcl
+# Select region with errors and view messages
+drc why
+```
+
+Post-fix Screenshot:
+
+![corrected nwell](https://github.com/user-attachments/assets/40f87039-fefe-46ed-8cbe-113875dc8314)
+
+# Select region with errors and view messages
+drc why
+```
+
+Post-fix Screenshot:
+
+  
+
 
 
 
