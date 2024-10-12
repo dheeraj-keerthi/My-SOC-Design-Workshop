@@ -473,7 +473,154 @@ open sky130A.tech file
 ```bash
 gvim sky130A.tech
 ```
+Screenshot after Inserting new commands into sky130A.tech file
 
+
+![edited poly 9 1](https://github.com/user-attachments/assets/0b9d6289-2db0-49aa-a08e-54903e47e76d)
+
+
+![edited poly 9 2](https://github.com/user-attachments/assets/97dc33f5-92e3-4d2c-b8e9-23e163678f42)
+
+Commands to Run:
+
+```tcl
+# Load the updated tech file
+tech load sky130A.tech
+```
+```tcl
+# Run DRC check
+drc check
+
+```
+```tcl
+# Select region with errors and view messages
+drc why
+```
+
+Post-fix Screenshot:
+
+![poly 9 corrected](https://github.com/user-attachments/assets/df147bb8-70c9-47bd-945f-cf37685c2ea9)
+
+5.Fixing Incorrectly Implemented difftap.2 Rule
+
+The difftap.2 rule was improperly implemented, with no DRC violation for spacing < 0.42u.
+
+Screenshot of difftap rules:
+
+![difftap 2](https://github.com/user-attachments/assets/d9bde2af-03a0-46d6-9d4f-5f6669ecc7a8)
+
+Problem: No violation occurred for difftap spacing < 0.42u.
+
+![difftap error](https://github.com/user-attachments/assets/82625354-1267-45f5-bb10-6320d79d90ee)
+
+Solution: Update the Sky130 DRC tech file.
+
+Inserting New Commands into sky130A.tech File:
+
+![edited difftap 2](https://github.com/user-attachments/assets/04840728-0ba4-4b31-9dc6-94145be686e8)
+
+Commands to Run:
+
+```tcl
+# Load the updated tech file
+tech load sky130A.tech
+```
+```tcl
+# Run DRC check
+drc check
+
+```
+```tcl
+# Select region with errors and view messages
+drc why
+```
+
+Post-fix Screenshot:
+
+![difftap corrected](https://github.com/user-attachments/assets/ede865a5-c634-4b5f-8108-8af527ffc36b)
+
+6.Fixing Incorrectly Implemented nwell.4 Rule
+
+The nwell.4 rule, which enforces the presence of a tap within the nwell, was also improperly implemented.
+
+Screenshot of nwell rules:
+
+![nwell 4 rule](https://github.com/user-attachments/assets/55d3fec3-0227-44c0-a70b-73ca6ecf8131)
+
+Problem: No DRC violation occurred even though a tap was missing from the nwell.
+
+
+![nwell error](https://github.com/user-attachments/assets/ce14dc30-1fe4-4633-afa1-b433bdcd8efd)
+
+
+
+Solution: Update the Sky130 DRC tech file.
+
+Inserting New Commands into sky130A.tech File:
+
+![edited nwel 1](https://github.com/user-attachments/assets/65398b05-5cf4-4e76-9a49-200181c51eab)
+
+![edited nwel 2](https://github.com/user-attachments/assets/79c55f1a-65cd-4713-92df-df7be286a766)
+
+
+Commands to Run:
+
+```tcl
+# Load the updated tech file
+tech load sky130A.tech
+```
+
+```tcl
+# Change drc style to drc full
+drc style drc(full)
+```
+
+```tcl
+# Run DRC check
+drc check
+
+```
+```tcl
+# Select region with errors and view messages
+drc why
+```
+
+Post-fix Screenshot:
+
+![corrected nwell](https://github.com/user-attachments/assets/40f87039-fefe-46ed-8cbe-113875dc8314)
+
+
+## Section 4 - Pre-layout timing analysis and importance of good clock tree.
+
+### Implementation
+
+Objectives:
+
+1.Fix minor DRC errors and verify the design for flow insertion.
+
+2.Save the finalized layout with a custom name and open for verification.
+
+3.Generate the LEF file from the layout.
+
+4.Copy the LEF and required library files to the 'picorv32a/src' directory.
+
+5.Edit config.tcl to update the library file and add the new LEF into OpenLane flow.
+
+6.Run OpenLane synthesis with the newly inserted custom inverter cell.
+
+7.Address any violations caused by the custom cell by adjusting design parameters.
+
+8.Run floorplanning and placement, verifying the custom cell's integration in the PnR flow.
+
+9.Perform post-synthesis timing analysis using the OpenSTA tool.
+
+10.Apply timing ECO fixes to resolve any timing violations.
+
+11.Replace the old netlist with the updated netlist and implement floorplan, placement, and CTS.
+
+12.Conduct post-CTS timing analysis using OpenROAD.
+
+13.Optimize post-CTS timing by removing sky130_fd_sc_hd__clkbuf_1 from CTS_CLK_BUFFER_LIST.
 
 
 
