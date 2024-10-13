@@ -666,7 +666,7 @@ Screenshot of Command Execution
 Condition 1: Port Alignment on Tracks
 
 * Verified that the input and output ports of the custom inverter cell are aligned at the intersections of vertical and horizontal tracks.
-![cond 1](https://github.com/user-attachments/assets/6901533f-ff0f-4375-bbac-0427bd499c0e)
+
 Condition 2: Width Verification
 * The width of the standard cell should be an odd multiple of the horizontal track pitch 0.46𝜇𝑚
 
