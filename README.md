@@ -173,7 +173,7 @@ Area\ of\ die\ in\ microns = 660.685 * 671.405 = 443587.212425\ Square\ Microns
 Commands to Load Floorplan DEF in Magic:
 1.Change directory to path containing generated floorplan def
 ```bash
-cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/07-09_20-37/results/floorplan/
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/07-10_09-38/results/floorplan/
 ```
 2.Command to load the floorplan def in magic tool
 ```bash
@@ -222,7 +222,7 @@ To load the generated placement DEF file in the Magic tool, use the following co
 Commands to Load Placement DEF in Magic
 1.Navigate to the directory containing the placement DEF file:
 ```bash
-cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/07-09_20-37/results/placement/
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/07-10_09-38/results/placement/
 ```
 2.Load the placement DEF in Magic:
 ```bash
@@ -622,11 +622,189 @@ Objectives:
 
 13.Optimize post-CTS timing by removing sky130_fd_sc_hd__clkbuf_1 from CTS_CLK_BUFFER_LIST.
 
+### Task 1: Fix minor DRC errors and verify the design for flow insertion.
 
+Conditions to Verify:
+  1. Conditiion 1:
+     * Input and output ports must lie on the intersection of vertical and horizontal tracks.
+  2. Condition 2:
+     * The width of the standard cell should be an odd multiple of the horizontal track pitch.
+  3. Condition 3:
+     * The height of the standard cell should be an even multiple of the vertical track pitch.
 
+Commands to Open the Layout in Magic
 
+```bash
+# Change directory to the vsdstdcelldesign folder
+cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+```
 
+```bash
+# Open the custom inverter layout in Magic
+magic -T sky130A.tech sky130_inv.mag &
+```
 
+Track Information of sky130_fd_sc_hd
+
+* The track information for the standard cell library sky130_fd_sc_hd is shown below. This will be used to verify the alignment and dimensions of the custom inverter cell.
+![task1(1)](https://github.com/user-attachments/assets/5afcff87-b74a-4357-a99d-cab640e4d16e)
+Setting Grid for Track Alignment
+
+* Use the following commands in the tkcon window to set the grid according to the standard cell track pitch.
+
+```tcl
+# Get syntax for the grid command
+help grid
+```
+```tcl
+# Set grid values for track alignment (locali layer)
+grid 0.46um 0.34um 0.23um 0.17um
+```
+
+Screenshot of Command Execution
+![command execution](https://github.com/user-attachments/assets/2a640865-30d1-4cde-be15-b74e2d97175b)
+Condition 1: Port Alignment on Tracks
+
+* Verified that the input and output ports of the custom inverter cell are aligned at the intersections of vertical and horizontal tracks.
+![cond 1](https://github.com/user-attachments/assets/6901533f-ff0f-4375-bbac-0427bd499c0e)
+Condition 2: Width Verification
+* The width of the standard cell should be an odd multiple of the horizontal track pitch 0.46𝜇𝑚
+
+Horizontal track pitch=0.46 umWidth of standard cell=1.38 um=0.46×3
+
+This condition is satisfied as the width is an odd multiple.
+![cond2](https://github.com/user-attachments/assets/6c8a6afd-0892-42d9-9b70-11627ca7fe79)
+Condition 3: Height Verification
+
+* The height of the standard cell should be an even multiple of the vertical track pitch 0.34𝜇𝑚
+
+Vertical track pitch=0.34 umHeight of standard cell=2.72 um=0.34×8
+
+This condition is satisfied as the height is an even multiple.
+![cond2](https://github.com/user-attachments/assets/6c8a6afd-0892-42d9-9b70-11627ca7fe79)
+### Task 2: Save the finalized layout with a custom name and open for verification.
+
+* Once the layout has been verified and finalized, follow the steps below to save it with a custom name and reopen it for verification.
+
+Command to Save the Layout with a Custom Name in Magic (tkcon Window):
+
+```tcl
+# Command to save layout as a new file
+save sky130_vsdinv.mag
+```
+![save sky130_](https://github.com/user-attachments/assets/9b6fe1c1-0b3d-44d5-a227-f6ac51f5fa2b)
+Command to Open the Newly Saved Layout in Magic:
+
+```bash
+# Open the custom inverter layout in Magic
+magic -T sky130A.tech sky130_vsdinv.mag &
+```
+
+Screenshot of the Newly Saved Layout:
+
+![new saved layout](https://github.com/user-attachments/assets/395c52ee-3f99-4cbe-8737-367baf87a0b0)
+### Task 3: Generate the LEF file from the layout.
+
+* After finalizing the custom inverter layout, you can generate the LEF (Library Exchange Format) file, which is essential for integrating the cell into the design flow.
+
+  Command to Write the LEF File in Magic (tkcon Window):
+
+  ```tcl
+  # Command to generate LEF
+  lef write
+  ```
+
+  Screenshot of the Command Execution:
+  ![lef write](https://github.com/user-attachments/assets/742c4688-0e9f-4cc5-8613-df424d83e6e4)
+ Screenshot of the Newly Created LEF File:
+![new lef](https://github.com/user-attachments/assets/4ff22a1a-2e97-4380-8855-7a575d8e2f5c)
+### Task 4: Copy the LEF and required library files to the 'picorv32a/src' directory.
+
+* After generating the LEF file, the next step is to copy it along with the required library files to the picorv32a design's src directory for integration.
+
+  Commands to Copy LEF and Library Files:
+
+  ```bash
+  # Copy the LEF file to the 'picorv32a/src' directory
+  cp sky130_vsdinv.lef ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+  ```
+  ```bash
+  # List and check if the LEF file is copied successfully
+  ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+  ```
+  ```bash
+  # Copy the required Liberty (.lib) files
+  cp libs/sky130_fd_sc_hd__* ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+  ```
+  ```bash
+  # List and check if the .lib files are copied successfully
+  ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+  ```
+
+  Screenshot of Command Execution:
+  ![task4](https://github.com/user-attachments/assets/007259c1-c7b0-4be8-8037-026b6c8d26ea)
+  ![task4(ii)](https://github.com/user-attachments/assets/4d73bf6c-552c-4874-811c-bd7f82249d21)
+  
+### Task 5: Edit config.tcl to update the library file and add the new LEF into OpenLane flow.
+
+* To ensure that the custom inverter cell is included in the OpenLane flow, update the config.tcl file by specifying the correct library files and adding the new LEF file.
+
+Commands to Add to config.tcl:
+
+```tcl
+# Set the paths for the new library files
+set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+set ::env(LIB_FASTEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib"
+set ::env(LIB_SLOWEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib"
+set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+
+# Include the custom LEF file
+set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]
+
+```
+Screenshot of the config.tcl:
+![task5](https://github.com/user-attachments/assets/cd5a6c99-6b44-401a-a968-4e8d0c4eb145)
+### Task 6: Run OpenLane synthesis with the newly inserted custom inverter cell.
+
+* To synthesize the design with the custom inverter cell included, follow the steps below.
+
+Commands to Run OpenLANE Flow Synthesis:
+
+```bash
+# Change directory to the OpenLANE flow working directory
+cd Desktop/work/tools/openlane_working_dir/openlane
+```
+```bash
+# Invoke the OpenLANE Docker subsystem
+docker
+```
+```tcl
+# Enter Interactive Mode in OpenLANE flow
+./flow.tcl -interactive
+
+```
+```tcl
+# Load required packages
+package require openlane 0.9
+```
+```tcl
+# Prepare the 'picorv32a' design
+prep -design picorv32a
+```
+```tcl
+# Include the newly added LEF file into the OpenLANE flow
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+```
+```tcl
+# Run synthesis for the design
+run_synthesis
+```
+
+Screenshots of Commands Execution:
+![run_synthesis](https://github.com/user-attachments/assets/ab3c6e5c-3bb6-4526-ab1a-8d1371ea22ef)
+
+### Task 7: Address any violations caused by the custom cell by adjusting design parameters.
 
 
 
