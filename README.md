@@ -817,7 +817,7 @@ Commands to Modify Parameters and Improve Timing:
 
   ```tcl
   # Prep the design again to update variables
-  prep -design picorv32a -tag 15-9_06-37 -overwrite
+  prep -design picorv32a -tag 13-10_10-15 -overwrite
   ```
   ```tcl
   # Include newly added lef into the flow
@@ -908,7 +908,7 @@ Placement Command
 
   ```bash
   # Change directory to placement result folder
-  cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/15-9_06-37/results/placement/
+  cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/13-10_10-15/results/placement/
   ```
   ```bash
   # Load placement def in magic
@@ -1060,7 +1060,7 @@ Desktop/
 ├── designs/  
 ├── picorv32a/
 ├── runs/
-├── 28-09_19-22/
+├── 14-10_09-25/
 ├── results/
 └── synthesis
 
@@ -1083,7 +1083,7 @@ Commands to write verilog
 help write_verilog
 
 # Overwriting current synthesis netlist
-write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-09_19-22/results/synthesis/picorv32a.synthesis.v
+write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-10_99-25/results/synthesis/picorv32a.synthesis.v
 
 # Exit from OpenSTA since timing analysis is done
 exit
@@ -1096,7 +1096,7 @@ Commands load the design and run necessary stages
 
 ```
 # Now once again we have to prep design so as to update variables
-prep -design picorv32a -tag 28-09_19-22 -overwrite
+prep -design picorv32a -tag 14-10_09-25 -overwrite
 
 # Addiitional commands to include newly added lef to openlane flow merged.lef
 set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
@@ -1142,10 +1142,10 @@ Commands to execute in the OpenLANE flow for performing OpenROAD timing analysis
 openroad
 
 # Reading lef file
-read_lef /openLANE_flow/designs/picorv32a/runs/28-09_19-22/tmp/merged.lef
+read_lef /openLANE_flow/designs/picorv32a/runs/14-10_09-25/tmp/merged.lef
 
 # Reading def file
-read_def /openLANE_flow/designs/picorv32a/runs/28-09_19-22/results/cts/picorv32a.cts.def
+read_def /openLANE_flow/designs/picorv32a/runs/14-10_09-25/results/cts/picorv32a.cts.def
 
 # Creating an OpenROAD database to work with
 write_db pico_cts.db
@@ -1154,7 +1154,7 @@ write_db pico_cts.db
 read_db pico_cts.db
 
 # Read netlist post CTS
-read_verilog /openLANE_flow/designs/picorv32a/runs/28-09_19-22/results/synthesis/picorv32a.synthesis_cts.v
+read_verilog /openLANE_flow/designs/picorv32a/runs/14-10_09-25/results/synthesis/picorv32a.synthesis_cts.v
 
 # Read library for design
 read_liberty $::env(LIB_SYNTH_COMPLETE)
@@ -1199,7 +1199,7 @@ echo $::env(CTS_CLK_BUFFER_LIST)
 echo $::env(CURRENT_DEF)
 
 # Setting def as placement def
-set ::env(CURRENT_DEF) /openLANE_flow/designs/picorv32a/runs/28-09_19-22/results/placement/picorv32a.placement.def
+set ::env(CURRENT_DEF) /openLANE_flow/designs/picorv32a/runs/14-10_09-25/results/placement/picorv32a.placement.def
 
 # Run CTS again
 run_cts
@@ -1211,10 +1211,10 @@ echo $::env(CTS_CLK_BUFFER_LIST)
 openroad
 
 # Reading lef file
-read_lef /openLANE_flow/designs/picorv32a/runs/28-09_19-22/tmp/merged.lef
+read_lef /openLANE_flow/designs/picorv32a/runs/14-10_09-25/tmp/merged.lef
 
 # Reading def file
-read_def /openLANE_flow/designs/picorv32a/runs/28-09_19-22/results/cts/picorv32a.cts.def
+read_def /openLANE_flow/designs/picorv32a/runs/14-10_09-25/results/cts/picorv32a.cts.def
 
 # Creating an OpenROAD database to work with
 write_db pico_cts1.db
@@ -1223,7 +1223,7 @@ write_db pico_cts1.db
 read_db pico_cts.db
 
 # Read netlist post CTS
-read_verilog /openLANE_flow/designs/picorv32a/runs/28-09_19-22/results/synthesis/picorv32a.synthesis_cts.v
+read_verilog /openLANE_flow/designs/picorv32a/runs/14-10_09-25/results/synthesis/picorv32a.synthesis_cts.v
 
 # Read library for design
 read_liberty $::env(LIB_SYNTH_COMPLETE)
@@ -1341,7 +1341,7 @@ Desktop/
 ├── designs/  
 ├── picorv32a/
 ├── runs/
-├── 28-09_19-22/
+├── 14-10_09-25/
 ├──tmp/
 └── floorplan
 
@@ -1381,7 +1381,7 @@ Desktop/
 ├── designs/  
 ├── picorv32a/
 ├── runs/
-├── 28-09_19-22/
+├── 14-10_09-25/
 ├── results/
 └── routing
 
@@ -1415,10 +1415,10 @@ Commands to execute in the OpenLANE flow for performing OpenROAD timing analysis
 openroad
 
 # Reading lef file
-read_lef /openLANE_flow/designs/picorv32a/runs/28-09_19-22/tmp/merged.lef
+read_lef /openLANE_flow/designs/picorv32a/runs/14-10_09-25/tmp/merged.lef
 
 # Reading def file
-read_def /openLANE_flow/designs/picorv32a/runs/28-09_19-22/results/routing/picorv32a.def
+read_def /openLANE_flow/designs/picorv32a/runs/14-10_09-25/results/routing/picorv32a.def
 
 # Creating an OpenROAD database to work with
 write_db pico_route.db
@@ -1427,7 +1427,7 @@ write_db pico_route.db
 read_db pico_route.db
 
 # Read netlist post CTS
-read_verilog /openLANE_flow/designs/picorv32a/runs/28-09_19-22/results/synthesis/picorv32a.synthesis_preroute.v
+read_verilog /openLANE_flow/designs/picorv32a/runs/14-10_09-25/results/synthesis/picorv32a.synthesis_preroute.v
 
 # Read library for design
 read_liberty $::env(LIB_SYNTH_COMPLETE)
@@ -1442,7 +1442,7 @@ read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
 set_propagated_clock [all_clocks]
 
 # Read SPEF
-read_spef /openLANE_flow/designs/picorv32a/runs/28-09_19-22/results/routing/picorv32a.spef
+read_spef /openLANE_flow/designs/picorv32a/runs/14-10_09-25/results/routing/picorv32a.spef
 
 # Generating custom timing report
 report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
